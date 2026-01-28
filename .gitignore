@@ -1,0 +1,37 @@
+# --- Security & Credentials ---
+# Never commit your AWS keys or secrets
+.env
+.aws/
+credentials
+*.pem
+*.pub
+
+# --- Python Environment ---
+# Keep your repo clean by ignoring the heavy environment folders
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# --- Local Data (Landing Zone) ---
+# Data should live in S3, not in your code repository
+*.dat
+*.json
+*.csv
+data/
+tmp/
+
+# --- Infrastructure (Part 4) ---
+# Ignore local build artifacts for CDK or Terraform
+cdk.out/
+.cdk.staging/
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
