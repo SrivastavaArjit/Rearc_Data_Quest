@@ -16,7 +16,7 @@ QUERY_PARAMS = {
 
 s3 = boto3.client('s3')
 
-def fetch_and_store_api_data():
+def sync_api_data():
     print(f"Fetching data from DataUSA API...")
     
     try:
@@ -35,10 +35,7 @@ def fetch_and_store_api_data():
             ContentType='application/json'
         )
         
-        print("API data is safely stored in S3.")
+        print("Sync Complete....")
 
     except Exception as e:
         print(f"Error during API ingestion: {e}")
-
-if __name__ == "__main__":
-    fetch_and_store_api_data()

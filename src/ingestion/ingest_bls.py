@@ -4,12 +4,10 @@ import boto3           # AWS SDK for Python to interact with S3
 from bs4 import BeautifulSoup   # to parse index HTML pages
 from urllib.parse import urljoin, urlparse  # for safe URL parsing
 
-# ================== CONFIG ==================
 BLS_INDEX_URL = "https://download.bls.gov/pub/time.series/pr"  # Main index page
 S3_BUCKET = "data-quest-bucket-rearc"   # Change to your S3 bucket
 S3_PREFIX = "raw/bls/"          # Folder/prefix in S3
 HEADERS = {'User-Agent': 'Arjit Srivastava srivastavaarjit1209@gmail.com'}
-# ============================================
 
 # Initialize S3 client
 s3 = boto3.client("s3")
@@ -144,7 +142,7 @@ def delete_removed(source_urls, existing_keys):
 
 
 # ---------- 6. Main driver ----------
-def main():
+def sync_bls_data():
     print("Discovering source links...")
     source_urls = discover_data_links(BLS_INDEX_URL)
     fileFingerprints = parse_data_listing(BLS_INDEX_URL)
@@ -161,7 +159,3 @@ def main():
     delete_removed(source_urls, existing_keys)
 
     print("Sync complete....")
-
-
-if __name__ == "__main__":
-    main()
