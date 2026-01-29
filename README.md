@@ -4,6 +4,30 @@ This project implements a robust, multi-region data pipeline that automates the 
 
 ---
 
+## 📂 Project Structure
+
+```text
+rearc-quest/
+├── .gitignore               # Contains path of files to be ignored by git
+├── requirements.txt         # Root-level dependencies for local development
+├── README.md                # Project documentation
+├── infrastructure/          # Contains Terraform files to setup infrastructure
+│   ├── .terraform.lock.hcl  # Pins provider versions for consistency
+│   ├── main.tf              # SQS, S3 notifications, and cross-region providers
+│   ├── lambda.tf            # Lambda functions and IAM roles
+└── src/                     # Python source code
+    ├── ingestion/           # Data collection module
+    │   ├── ingest_api_data.py # Handles Census/DataUSA API requests
+    │   └── ingest_bls.py      # Handles BLS data scraping and formatting
+    ├── analytics/           # Data transformation & EDA module
+    │   ├── data_analytics.ipynb # notebook version of the code for analysing the data
+    │   └── data_analytics.py   # script version of the code for analysing the data
+    └── lambda_handlers/     # AWS Lambda entry points
+        ├── ingestion_handler.py # Called by ingestion lambda function to ingest data into S3
+        └── analytics_handler.py # Called by analytics lambda function to analyze the data
+```
+---
+
 ## 🚀 The Pipeline Flow
 
 The architecture is designed to be decoupled and resilient, spanning two AWS regions:
