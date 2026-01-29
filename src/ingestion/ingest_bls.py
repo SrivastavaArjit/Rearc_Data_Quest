@@ -8,7 +8,6 @@ from urllib.parse import urljoin, urlparse  # for safe URL parsing
 BLS_INDEX_URL = "https://download.bls.gov/pub/time.series/pr"  # Main index page
 S3_BUCKET = "data-quest-bucket-rearc"   # Change to your S3 bucket
 S3_PREFIX = "raw/bls/"          # Folder/prefix in S3
-LOCAL_DIR = "/Users/arjitsrivastava/react-quest/data/"             # Local folder for raw and Parquet
 HEADERS = {'User-Agent': 'Arjit Srivastava srivastavaarjit1209@gmail.com'}
 # ============================================
 
@@ -100,7 +99,7 @@ def list_s3_keys():
 
 
 # ---------- 4. Upload to S3 if changed ----------
-def upload_if_changed(url, key, fileFingerprints, local_dir=LOCAL_DIR):
+def upload_if_changed(url, key, fileFingerprints):
     """
     Fetch content from URL, save locally, and upload to S3 if changed.
     """
