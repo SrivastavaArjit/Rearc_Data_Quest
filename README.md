@@ -25,12 +25,10 @@ The architecture is designed to be decoupled and resilient, spanning two AWS reg
 
 | Column | Type | Description |
 | :--- | :--- | :--- |
-| **ID Nation** | String | Unique identifier for the nation (e.g., `01000US`). |
+| **Nation ID** | String | Unique identifier for the nation (e.g., `01000US`). |
 | **Nation** | String | Human-readable name of the nation (e.g., `United States`). |
-| **ID Year** | Integer | Numerical representation of the data year. |
-| **Year** | String/Int| The year the data was collected (used for joining). |
-| **Population** | Integer | Total estimated resident population count. |
-| **Slug Nation**| String | URL-friendly name for the nation. |
+| **Year** | Integer | Numerical representation of the data year. |
+| **Population** | Integer | Total estimated resident population count. ||
 
 ### 2. BLS Time Series Data (BLS Source)
 *Source: `raw/bls/pr.data.0.Current`*
