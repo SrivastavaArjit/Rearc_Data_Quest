@@ -104,6 +104,12 @@ The architecture is designed to be decoupled and resilient, spanning two AWS reg
     ```
 
 ---
+## S3 Bucket Screenshot
+
+<img width="1203" height="651" alt="Screenshot 2026-01-30 at 7 44 47 PM" src="https://github.com/user-attachments/assets/92913b98-75fe-4aa7-b0ff-42b71f33cf71" />
+
+<img width="1131" height="162" alt="Screenshot 2026-01-30 at 7 45 00 PM" src="https://github.com/user-attachments/assets/54f69aeb-d633-4737-baf4-03e0b2d3092d" />
+
 
 ## 🧪 Testing
 
