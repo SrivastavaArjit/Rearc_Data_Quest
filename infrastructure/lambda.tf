@@ -28,13 +28,28 @@ resource "aws_lambda_function" "ingestion_lambda" {
   layers = ["arn:aws:lambda:ap-south-1:336392948345:layer:AWSSDKPandas-Python312:1"]
 }
 
+# 1. Define the Rule with a Name
 resource "aws_cloudwatch_event_rule" "daily" {
+  name                = "rearc-ingestion-schedule"
+  description         = "Triggers the ingestion Lambda every 2 minutes for testing"
   schedule_expression = "rate(1 day)"
+  state               = "ENABLED"
 }
 
+# 2. Grant Permission (The "Handshake")
+resource "aws_lambda_permission" "allow_eventbridge" {
+  statement_id  = "AllowExecutionFromEventBridge"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.ingestion_lambda.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.daily.arn
+}
+
+# 3. Connect the Rule to the Lambda Target
 resource "aws_cloudwatch_event_target" "ingestion_target" {
-  rule = aws_cloudwatch_event_rule.daily.name
-  arn  = aws_lambda_function.ingestion_lambda.arn
+  rule      = aws_cloudwatch_event_rule.daily.name
+  target_id = "TriggerIngestionLambda" # Useful for tracking in the console
+  arn       = aws_lambda_function.ingestion_lambda.arn
 }
 
 # =====================================================
