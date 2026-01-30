@@ -90,11 +90,17 @@ The architecture is designed to be decoupled and resilient, spanning two AWS reg
 ## ⚙️ Deployment & Setup
 
 ### Prerequisites
+* Use Homebrew(Mac Specific) to install the AWS CLI and Terraform
 * AWS CLI configured with appropriate credentials.
 * Terraform (v1.6+) and Python 3.12+ installed locally.
+* Included requirements.txt file to install all the required libraries
 
 ### Installation
-1.  **Initialize Terraform:**
+1.  **Install dependencies:**
+   ```bash
+    pip install -r requirements.txt
+   ```
+2.  **Initialize Terraform:**
     ```bash
     terraform -chdir=infrastructure init
     ```
